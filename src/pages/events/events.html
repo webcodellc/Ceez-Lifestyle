@@ -1,0 +1,33 @@
+<ion-content padding>
+
+  <div class="my-header nobottom">
+    <div class="my-header-paragraph">
+      <ion-icon class="menu" name="menu" (click)="gotoMenu()"></ion-icon>
+      <img class="logo" src="./assets/imgs/logo.png" height="60px"/>
+    </div>
+    <div class="my-header-title">
+      {{title}}
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-list-header class="filter-bar">
+      <button ion-button icon-only item-start clear class="filter-btn">
+        Filter
+      </button>
+      <button ion-button icon-only item-end clear class="filter-btn">
+        - Clear Filters
+      </button>
+    </ion-list-header>
+    <div class="event-list">
+      <ion-item *ngFor="let event of events; let i = index" (click)="gotoEvent(event.id)">
+        <img class="event-avatar" src="{{cloud_url}}h_160,w_200/{{event.public_id}}" item-start>
+        <h3>{{event.date | date: 'dd, MMMM yyyy'}}</h3>
+        <h3>{{event.title}}</h3>
+        <h3>{{event.venue}}</h3>
+        <h3>{{event.address}}</h3>
+      </ion-item>
+    </div>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,85 @@
+<ion-content padding>
+
+    <div class="my-header nobottom">
+      <div class="my-header-paragraph">
+        <ion-icon class="menu" name="menu" (click)="gotoMenu()"></ion-icon>
+        <img class="logo" src="./assets/imgs/logo.png" height="60px"/>
+      </div>
+      <div class="my-header-title">
+        <ion-icon class="back" name="ios-arrow-back" (click)="cancel()"></ion-icon>
+        <label>{{title}}</label>
+      </div>
+    </div>
+
+    <div class="event-info">
+      <img src="{{cloud_url}}{{src}}"/>
+
+      <ion-grid>
+
+        <div id="music-player" *ngIf="sound_src">
+          <audio src="{{audio_cloud_url}}{{sound_src}}" id="audio" style="display: none"></audio>
+          <button ion-button icon-only clear color="white" (click)="togglePlay()"><ion-icon name="{{play ? 'pause' : 'play'}}"></ion-icon></button>
+          <div class="progress-outer">
+              <div class="progress-inner" [style.width]="progress + '%'">
+              </div>
+          </div>
+          <div class="duration">{{cminitue}}:{{csecond}}</div>&nbsp;/&nbsp;<div class="duration">{{tminitue}}:{{tsecond}}</div>
+        </div>
+
+        <ion-row>
+          <ion-col>
+            Event:
+          </ion-col>
+          <ion-col col-8>
+            {{title}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Date:
+          </ion-col>
+          <ion-col col-8>
+            {{date | date: 'dd, MMMM yyyy'}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Venue:
+          </ion-col>
+          <ion-col col-8>
+            {{venue}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Address:
+          </ion-col>
+          <ion-col col-8>
+            {{address}}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <button round outline small ion-button *ngIf="genre" color="white" class="normal-text">{{genre}}</button>
+          </ion-col>
+          <ion-col>
+            <button round outline small ion-button *ngIf="venue_type" color="white" class="normal-text">{{venue_type}}</button>
+          </ion-col>
+          <ion-col>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <button *ngIf="price" ion-button icon-start full round large color="white" class="small-height pink-color margin normal-text" (click)="Purchase()">
+      <ion-icon name="ios-card"></ion-icon>
+        {{price}}$ Purchase
+    </button>
+
+    <div #map id="map"></div>
+  
+  </ion-content>
+  

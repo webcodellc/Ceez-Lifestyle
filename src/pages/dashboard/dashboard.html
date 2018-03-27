@@ -1,0 +1,37 @@
+<ion-content padding>
+
+    <div class="my-header">
+      <div class="my-header-paragraph">
+        <ion-icon class="menu" name="menu" (click)="gotoMenu()"></ion-icon>
+        <img class="logo" src="./assets/imgs/logo.png" height="60px"/>
+      </div>
+      <div class="my-header-title">
+        {{title}}
+      </div>
+    </div>
+
+    <button ion-button icon-start full round large color="white" class="small-height pink-color" (click)="createNewEvent()">
+      <ion-icon name="add"></ion-icon>
+      Create a new event
+    </button>
+
+    <div class="my-card">
+      <div class="my-card-title">
+        You are not hosting any upcoming events.
+      </div>
+      <div class="my-card-content">
+        <a id="create-new-event-link" (click)="createNewEvent()">Create a new event!</a>
+      </div>
+    </div>
+
+    <div class="my-card">
+      <div class="my-card-title">
+        Your next event:
+        Friday, March 26,2018
+      </div>
+      <div class="my-card-content">
+        Share and go with your friends
+      </div>
+    </div>
+
+</ion-content>

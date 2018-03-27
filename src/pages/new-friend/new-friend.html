@@ -1,0 +1,30 @@
+<ion-content padding>
+
+  <div class="my-header nobottom">
+    <div class="my-header-paragraph">
+      <ion-icon class="menu" name="menu" (click)="gotoMenu()"></ion-icon>
+      <img class="logo" src="./assets/imgs/logo.png" height="60px"/>
+    </div>
+    <div class="my-header-title">
+      <ion-icon class="back" name="ios-arrow-back" (click)="cancel()"></ion-icon>
+      <label>{{title}}</label>
+    </div>
+  </div>
+
+  <ion-grid>
+    <ion-row *ngFor="let user of users">
+      <ion-col col-3>
+        <img class="avatar" src="{{cloud_url}}{{user.profileImage}}" (click)="viewProfile(user)"/>
+      </ion-col>
+      <ion-col col-7>
+        <h4>{{user.username}}</h4>
+        <h5>{{user.age}}</h5>
+        <h5>{{user.location}}</h5>
+      </ion-col>
+      <ion-col col-2 class="action">
+        <ion-icon name="md-checkmark-circle-outline" (click)="addFriend()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

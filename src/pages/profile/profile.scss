@@ -1,0 +1,51 @@
+page-profile {
+    
+    img.avatar {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid white;
+    }
+
+    .friend-col {
+        display: inline-block;
+    }
+
+    img.friend {
+        width: 12vw;
+        height: 12vw;
+        object-fit: cover;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 1px solid white;
+    }
+
+    .border-top {
+        border-top: 1px solid map-get($colors, primary);
+    }
+
+    .white-text {
+
+        ion-row {
+            color: white;
+            font-size: 16px;
+            min-height: 32px;
+        }
+
+        textarea, input {
+            margin: 0px;
+            padding: 0 0 6px 0;
+            color: white;
+            font-size: 16px;
+        }
+    }
+
+    .qr-code {
+        margin-top: 32px;
+
+        h4 {
+            color: white;
+        }
+    }
+}

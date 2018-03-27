@@ -1,0 +1,54 @@
+page-event-detail {
+
+    .event-info {
+        img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: -4px;
+        }
+        ion-grid {
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 16px;
+        }
+    }
+
+    #music-player {
+        button {
+            margin-top: -5px;
+        }
+    
+        .progress-outer {
+            width: calc(100% - 200px);
+            margin: 10px 2%;
+            padding: 1px;
+            text-align: center;
+            background-color: #f4f4f4;
+            border: 1px solid #dcdcdc;
+            color: #fff;
+            border-radius: 20px;
+            display: inline-block;
+        }
+     
+        .progress-inner {
+            min-width: 0%;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 4px;
+            border-radius: 20px;
+            background-color: map-get($colors, dark);
+        }
+
+        .duration {
+            width: 42px;
+            display: inline-block;
+        }
+    }
+
+    
+    #map {
+        height: 200px;
+    }
+
+}

@@ -1,0 +1,76 @@
+<ion-content padding>
+
+  <div class="my-header nobottom">
+    <div class="my-header-paragraph">
+      <ion-icon class="menu" name="menu" (click)="gotoMenu()"></ion-icon>
+      <img class="logo" src="./assets/imgs/logo.png" height="60px"/>
+    </div>
+    <div class="my-header-title">
+      <ion-icon class="back" name="ios-arrow-back" (click)="cancel()"></ion-icon>
+      {{title}}
+      <ion-icon *ngIf="!edit && me" name="create" (click)="toggleEdit()"></ion-icon>
+      <ion-icon *ngIf="edit" name="md-checkmark" (click)="updateEdit()"></ion-icon>
+      <ion-icon *ngIf="edit" name="md-close" (click)="toggleEdit()"></ion-icon>
+    </div>
+    <ion-row margin-top padding-bottom>
+      <ion-col col-4>
+        <img class="avatar" src="{{cloud_url}}{{src}}" (click)="triggerAvatar()"/>
+        <input type="file" accept="image/*" style="display: none;" id="file_avatar" (change)="uploadAvatar($event)"/>
+      </ion-col>
+      <ion-col col-8 class="white-text">
+        <ion-row>
+          Name: &nbsp;
+          <div *ngIf="!edit">{{name}}</div>
+          <ion-input *ngIf="edit" placeholder="Type Name" [(ngModel)]="name" required></ion-input>
+        </ion-row>
+        <ion-row>
+          Age: &nbsp;
+          <div *ngIf="!edit">{{age}}</div>
+          <ion-input type="number" *ngIf="edit" placeholder="24" [(ngModel)]="age" required></ion-input>
+        </ion-row>
+        <ion-row>
+          Location: &nbsp;
+          <div *ngIf="!edit">{{location}}</div>
+          <ion-textarea *ngIf="edit" placeholder="i.e: Miami" [(ngModel)]="location" required></ion-textarea>
+        </ion-row>
+        <ion-row>
+          Attended: &nbsp; {{attended}} Events
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <div class="my-header-title border-top">
+      Friends
+      <ion-icon *ngIf="me" name="add" (click)="addFriends()"></ion-icon>
+    </div>
+
+    <ion-row *ngIf="friends.length > 0">
+      <div class="margin-auto" style="display: inline-flex;">
+        <img *ngFor="let friend of friends" class="friend" src="{{cloud_url}}{{friend.profileImage}}" (click)="viewProfile(friend)"/>
+      </div>
+    </ion-row>
+
+    <div *ngIf="me && (friends.length == 0)" class="input-label-group" text-center>
+      <a class="border-bottom" style="color:white" (click)="addFriends()">Add Friends</a>
+    </div>
+
+    <ion-row margin-top padding-bottom *ngIf="me">
+      <ion-col class="qr-code">
+        <h4>Scan QR code and share friends!</h4>
+      </ion-col>
+      <ion-col>
+        <ngx-qrcode [qrc-value]="id"></ngx-qrcode>       
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="!me" padding class="input-label-group" text-center>
+      <a class="border-bottom" style="color:white" (click)="addFriend()">Add Friends List</a>
+    </div>
+
+    <div class="my-header-title border-top">
+      Upcoming events
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,151 @@
+<ion-content padding>
+
+  <div class="my-header nobottom">
+    <div class="my-header-paragraph">
+      <ion-icon class="menu" name="menu" (click)="gotoMenu()"></ion-icon>
+      <img class="logo" src="./assets/imgs/logo.png" height="60px"/>
+    </div>
+    <div class="my-header-title">
+      <ion-icon class="back" name="ios-arrow-back" (click)="cancel()"></ion-icon>
+      <label>{{title}}</label>
+    </div>
+  </div>
+
+  <form (ngSubmit)="submit()" #eventForm="ngForm">
+
+  <div class="event-info">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          Event:
+        </ion-col>
+        <ion-col col-8>
+          <ion-input placeholder="Type Name" name="name" [(ngModel)]="model.name" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Date:
+        </ion-col>
+        <ion-col col-8>
+          <ion-datetime displayFormat="MMM DD, YYYY" name="date" placeholder="Select Date" [(ngModel)]="model.date" required></ion-datetime>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Genre:
+        </ion-col>
+        <ion-col col-8>
+          <ion-select name="genre" [(ngModel)]="model.genre" required>
+            <ion-option value="Open-Format">Open-Format</ion-option>
+            <ion-option value="EDM">EDM</ion-option>
+            <ion-option value="Hip-Hop">Hip-Hop</ion-option>
+            <ion-option value="Rap">Rap</ion-option>
+            <ion-option value="Latin">Latin</ion-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Dress code:
+        </ion-col>
+        <ion-col col-8>
+          <ion-input type="number" placeholder="Optional" name="dressCode" [(ngModel)]="model.dressCode"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Venue:
+        </ion-col>
+        <ion-col col-8>
+          <ion-input placeholder="" name="venue" [(ngModel)]="model.venue" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Address:
+        </ion-col>
+        <ion-col col-8>
+          <ion-input placeholder="i.e. 123 Drive Miami, FL" name="address" [(ngModel)]="model.address" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Type of Venue:
+        </ion-col>
+        <ion-col col-8>
+          <ion-select name="venue_type" [(ngModel)]="model.venue_type" required>
+            <ion-option value="Club">Club</ion-option>
+            <ion-option value="Bar">Bar</ion-option>
+            <ion-option value="Lounge">Lounge</ion-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Cover:
+        </ion-col>
+        <ion-col col-8>
+          <ion-toggle name="cover" [(ngModel)]="cover"></ion-toggle>
+          <ion-input *ngIf="cover" type="number" placeholder="$" name="price" [(ngModel)]="model.price" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Details:
+        </ion-col>
+        <ion-col col-8>
+          <ion-textarea placeholder="Optional" name="details" [(ngModel)]="model.details"></ion-textarea>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Image:
+        </ion-col>
+        <ion-col col-8>
+          <input type="file" accept="image/*" style="display: none;" id="image_file" (change)="uploadImage($event)"/>
+          <button type="button" color="white" class="small-height" (click)="trigerImage()">
+            <ion-icon name="md-images"></ion-icon>
+          </button>
+          <button *ngIf="model.public_id" type="button" color="white" class="small-height" (click)="deleteImage()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-card *ngIf="model.public_id">
+        <img src="{{cloud_url}}{{model.public_id}}"/>
+      </ion-card>
+      <ion-row>
+        <ion-col>
+          Music:
+        </ion-col>
+        <ion-col col-8>
+          <input type="file" accept="audio/*" style="display: none;" id="audio_file" (change)="uploadSound($event)"/>
+          <button type="button" color="white" class="small-height" (click)="triggerSound()">
+            <ion-icon name="ios-musical-notes"></ion-icon>
+          </button>
+          <button *ngIf="model.sound_id" type="button" color="white" class="small-height" (click)="deleteSound()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-card *ngIf="model.sound_id">
+        <audio src="{{audio_cloud_url}}{{model.sound_id}}" controls></audio>
+      </ion-card>
+    </ion-grid>
+
+  </div>
+
+  <button ion-button icon-start full round large color="white" class="margin pink-color small-height" [disabled]="!eventForm.form.valid" type="submit">
+    <ion-icon name="add"></ion-icon>
+    Create Event
+  </button>
+
+  </form>
+
+  <div class="input-label-group">
+    <a id="event-cancel-link" (click)="cancel()">Cancel</a>
+  </div>
+
+</ion-content>

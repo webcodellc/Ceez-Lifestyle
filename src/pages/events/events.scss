@@ -1,0 +1,31 @@
+page-events {
+
+    .filter-bar {
+        background: rgba(0, 0, 0, 0.6);
+        margin-bottom: 1px;
+
+        .filter-btn {
+            color: white;
+            font-size: 16px;
+            text-transform: none;
+        }
+    }
+
+    .event-list {
+        background: rgba(0, 0, 0, 0.75);
+        padding: 0px 16px 16px 16px;
+
+        ion-item{
+            background: none;
+            border-bottom: 1px solid #a315b0;
+            padding: 8px 0px;
+            color: white;
+
+            .event-avatar {
+                width: 40%;
+            }
+        }
+
+    }
+    
+}

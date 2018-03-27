@@ -1,0 +1,29 @@
+<ion-content padding>
+
+  <div class="my-header">
+    <div class="my-header-paragraph">
+      <ion-icon class="menu" name="close" (click)="close()"></ion-icon>
+      <img class="logo" src="./assets/imgs/logo.png" height="60px"/>
+    </div>
+    <div class="my-header-title">
+
+      <div class="menu-item" (click)="gotoNearEvents()">Home</div>
+
+      <div class="menu-item" (click)="gotoDashboard()">Dashboard</div>
+      <div *ngIf="user.id" class="menu-item" (click)="gotoProfile()">Profile</div>
+      <div class="menu-item" (click)="gotoEvents()">Events</div>
+      <div *ngIf="user.id" class="menu-item" (click)="gotoNewEvent()">New Event</div>
+      <div *ngIf="user.id" class="menu-item" (click)="gotoMyTickets()">My Tickets</div>
+
+      <div *ngIf="user.id">
+          <div class="menu-item" (click)="logout()">Log out</div>
+      </div>
+
+      <div *ngIf="!user.id">
+        <div class="menu-item" (click)="login()">Log in</div>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>
